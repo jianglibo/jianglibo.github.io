@@ -3,3 +3,5 @@ https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/crea
 
 cd ./docs
 bundle exec jekyll serve
+
+all minima assets are located in ~/gems/gems/minima-2.5.1/
