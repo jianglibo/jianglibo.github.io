@@ -13,7 +13,31 @@ ssh -v -D 1337 -N uc2ecca992df94ad490abf7e3b3a39455@xx.xx.xx.xx -p 2222
 
 免费的账号和密码可以在[【此网站】][resp-me]上获取。
 
-设置firefox。注意SOCKS主机必须填写你运行ssh命令的服务器，通常情况下是本机。即127.0.0.1，端口就是前面的-D参数后面的数值。
+## CURL
+{% highlight bash %}
+curl --socks5 localhost:1337 ifconfig.io/all
+{% endhighlight %}
+
+输出：
+{% highlight json %}
+{
+  "country_code":"FR",
+  "encoding":"gzip",
+  "forwarded":"163.172.144.249",
+  "ifconfig_hostname":"ifconfig.io",
+  "ip":"163.172.144.249",
+  "lang":"",
+  "method":"GET",
+  "mime":"*/*",
+  "port":56566,
+  "referer":"",
+  "ua":"curl/7.68.0"
+}
+{% endhighlight %}
+注意country_code是法国。
+
+## 设置firefox。
+注意SOCKS主机必须填写你运行ssh命令的服务器，通常情况下是本机。即127.0.0.1，端口就是前面的-D参数后面的数值。
 ![setup firefox proxy](/assets/images/firefox-config.png)
 
 
