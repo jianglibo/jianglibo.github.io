@@ -11,6 +11,8 @@ ssh -v -D 1337 -N uc2ecca992df94ad490abf7e3b3a39455@xx.xx.xx.xx -p 2222
 即可。其中1337是本地监听端口，uc2ecca992df94ad490abf7e3b3a39455@xx.xx.xx.xx是用户名和IP地址， 2222是远程端口。
 当提示密码时输入密码。如果一切顺利就会保持在链接状态。
 
+不知道怎么在windows上安装SSH？[在win10上面安装openssh客户端](/ssh/2021/10/04/install-openssh-on-windows.html)
+
 免费的账号和密码可以在[【此网站】][resp-me]上获取。
 
 ## CURL
