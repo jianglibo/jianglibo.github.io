@@ -43,5 +43,7 @@ curl --socks5 localhost:1337 ifconfig.io/all
 ![setup firefox proxy](/assets/images/firefox-config.png)
 
 
+## 访问twitter
+![visit twitter](/assets/images/firefox-twitter.png)
 
 [resp-me]: https://resp.me
