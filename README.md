@@ -5,3 +5,5 @@ cd ./docs
 bundle exec jekyll serve
 
 all minima assets are located in ~/gems/gems/minima-2.5.1/
+
+https://github.com/jekyll/minima
