@@ -2,6 +2,7 @@
 layout: post
 title:  "Share Copy Paster content between all subscribes"
 date:   2021-11-19 16:27:04 +0300
+description: Share text content between hosts, if remote controll doesn't have copy paster support.
 categories: java
 custom_js:
 - https://js.pusher.com/7.0/pusher.min.js

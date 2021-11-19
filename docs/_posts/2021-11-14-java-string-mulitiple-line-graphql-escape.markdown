@@ -2,6 +2,7 @@
 layout: post
 title:  "Graphql query string escape util for JAVA"
 date:   2021-11-14 6:56:04 +0300
+description: escape mulitple lines to java string.
 categories: java
 custom_js:
 - multiple-line-escape

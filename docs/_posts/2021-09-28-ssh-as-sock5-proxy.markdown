@@ -2,6 +2,7 @@
 layout: post
 title:  "如何使用SSH建立一个SOCK5代理"
 date:   2021-07-30 20:59:04 +0300
+description: 如何使用SSH建立一个sock5代理，从而访问被屏蔽的站点。
 categories: ssh
 ---
 超级简单，只要在命令行输入：
