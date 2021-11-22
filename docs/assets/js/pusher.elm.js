@@ -6227,7 +6227,7 @@ var $elm$http$Http$get = function (r) {
 };
 var $author$project$Pusher$Dto$InitValue = F2(
 	function (cpsyc_url, channel_name) {
-		return {r: channel_name, B: cpsyc_url};
+		return {j: channel_name, B: cpsyc_url};
 	});
 var $author$project$Pusher$Dto$initValueDecoder = A3(
 	$elm$json$Json$Decode$map2,
@@ -6297,18 +6297,18 @@ var $author$project$Pusher$init = function (flags) {
 		var initValue = _v0.a;
 		return _Utils_Tuple2(
 			{
-				r: initValue.r,
-				H: false,
+				j: initValue.j,
+				G: false,
 				g: '',
 				B: initValue.B,
-				m: '',
+				n: '',
 				N: $elm$core$Maybe$Nothing,
 				O: '',
-				F: '',
+				J: '',
 				_: $elm$time$Time$millisToPosix(0)
 			},
 			function () {
-				var allNumberCode = $author$project$Pusher$ChannelNameUtil$pickoutNumber(initValue.r);
+				var allNumberCode = $author$project$Pusher$ChannelNameUtil$pickoutNumber(initValue.j);
 				return _Utils_eq(
 					$elm$core$String$length(allNumberCode),
 					$author$project$Pusher$channelNameLength) ? $elm$http$Http$get(
@@ -6321,14 +6321,14 @@ var $author$project$Pusher$init = function (flags) {
 		var err = _v0.a;
 		return _Utils_Tuple2(
 			{
-				r: '',
-				H: false,
+				j: '',
+				G: false,
 				g: '',
 				B: '',
-				m: $elm$json$Json$Decode$errorToString(err),
+				n: $elm$json$Json$Decode$errorToString(err),
 				N: $elm$core$Maybe$Nothing,
 				O: '',
-				F: '',
+				J: '',
 				_: $elm$time$Time$millisToPosix(0)
 			},
 			$elm$core$Platform$Cmd$none);
@@ -6615,7 +6615,7 @@ var $elm$time$Time$every = F2(
 	});
 var $author$project$Pusher$Dto$RemoteContentUpldateEvent = F2(
 	function (socket_id, content) {
-		return {g: content, F: socket_id};
+		return {g: content, J: socket_id};
 	});
 var $author$project$Pusher$Dto$remoteContentUpdateEventDecoder = A3(
 	$elm$json$Json$Decode$map2,
@@ -6692,7 +6692,7 @@ var $author$project$Pusher$ChannelNameUtil$insertDash = F2(
 	});
 var $author$project$Pusher$Model$isChannelNameEmpty = function (model) {
 	return !$elm$core$String$length(
-		$author$project$Pusher$ChannelNameUtil$pickoutNumber(model.r));
+		$author$project$Pusher$ChannelNameUtil$pickoutNumber(model.j));
 };
 var $elm$http$Http$jsonBody = function (value) {
 	return A2(
@@ -6737,7 +6737,7 @@ var $author$project$Pusher$update = F2(
 					$author$project$Pusher$channelNameLength) ? _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{r: code, m: ''}),
+						{j: code, n: ''}),
 					$elm$http$Http$get(
 						{
 							W: A2($elm$http$Http$expectJson, $author$project$Pusher$ReturnChannelData, $author$project$Pusher$Dto$channelDataDecoder),
@@ -6745,7 +6745,7 @@ var $author$project$Pusher$update = F2(
 						})) : _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{r: code}),
+						{j: code}),
 					$elm$core$Platform$Cmd$none);
 			case 3:
 				var rcn = msg.a;
@@ -6760,15 +6760,15 @@ var $author$project$Pusher$update = F2(
 						return _Utils_Tuple2(
 							_Utils_update(
 								model,
-								{m: cd.M}),
+								{n: cd.M}),
 							$elm$core$Platform$Cmd$none);
 					} else {
 						return _Utils_Tuple2(
 							_Utils_update(
 								model,
 								{
-									r: A2($author$project$Pusher$ChannelNameUtil$insertDash, cd.M, 3),
-									H: true,
+									j: A2($author$project$Pusher$ChannelNameUtil$insertDash, cd.M, 3),
+									G: true,
 									g: cd.g
 								}),
 							$author$project$Pusher$subscribeToPusher(cd.M));
@@ -6779,18 +6779,18 @@ var $author$project$Pusher$update = F2(
 						_Utils_update(
 							model,
 							{
-								m: $author$project$Pusher$ChannelNameUtil$httpErrorToString(err)
+								n: $author$project$Pusher$ChannelNameUtil$httpErrorToString(err)
 							}),
 						$elm$core$Platform$Cmd$none);
 				}
 			case 4:
-				var allNumberCode = $author$project$Pusher$ChannelNameUtil$pickoutNumber(model.r);
+				var allNumberCode = $author$project$Pusher$ChannelNameUtil$pickoutNumber(model.j);
 				return ($elm$core$String$isEmpty(allNumberCode) || _Utils_eq(
 					$elm$core$String$length(allNumberCode),
 					$author$project$Pusher$channelNameLength)) ? _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{m: ''}),
+						{n: ''}),
 					$elm$http$Http$get(
 						{
 							W: A2($elm$http$Http$expectJson, $author$project$Pusher$ReturnChannelData, $author$project$Pusher$Dto$channelDataDecoder),
@@ -6799,7 +6799,7 @@ var $author$project$Pusher$update = F2(
 					_Utils_update(
 						model,
 						{
-							m: 'Channel name must contains ' + ($elm$core$String$fromInt($author$project$Pusher$channelNameLength) + (' digits, like ' + $author$project$Pusher$channelNameExamplePattern))
+							n: 'Channel name must contains ' + ($elm$core$String$fromInt($author$project$Pusher$channelNameLength) + (' digits, like ' + $author$project$Pusher$channelNameExamplePattern))
 						}),
 					$elm$core$Platform$Cmd$none);
 			case 5:
@@ -6826,10 +6826,10 @@ var $author$project$Pusher$update = F2(
 											$elm$json$Json$Encode$string(model.g)),
 											_Utils_Tuple2(
 											'socket_id',
-											$elm$json$Json$Encode$string(model.F)),
+											$elm$json$Json$Encode$string(model.J)),
 											_Utils_Tuple2(
 											'id',
-											$elm$json$Json$Encode$string(model.r))
+											$elm$json$Json$Encode$string(model.j))
 										]))),
 							W: $elm$http$Http$expectString($author$project$Pusher$PostContentReturn),
 							aa: $author$project$Pusher$ChannelNameUtil$buildContentPostUrl(model.B)
@@ -6845,11 +6845,11 @@ var $author$project$Pusher$update = F2(
 					return $elm$core$String$isEmpty(s) ? _Utils_Tuple2(
 						_Utils_update(
 							model,
-							{m: ''}),
+							{n: ''}),
 						$elm$core$Platform$Cmd$none) : _Utils_Tuple2(
 						_Utils_update(
 							model,
-							{m: s}),
+							{n: s}),
 						$elm$core$Platform$Cmd$none);
 				} else {
 					var err = pcr.a;
@@ -6857,7 +6857,7 @@ var $author$project$Pusher$update = F2(
 						_Utils_update(
 							model,
 							{
-								m: $author$project$Pusher$ChannelNameUtil$httpErrorToString(err)
+								n: $author$project$Pusher$ChannelNameUtil$httpErrorToString(err)
 							}),
 						$elm$core$Platform$Cmd$none);
 				}
@@ -6866,7 +6866,7 @@ var $author$project$Pusher$update = F2(
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{F: socket_id}),
+						{J: socket_id}),
 					$elm$core$Platform$Cmd$none);
 			default:
 				var contentUpdateResult = msg.a;
@@ -6876,7 +6876,7 @@ var $author$project$Pusher$update = F2(
 						_Utils_update(
 							model,
 							{
-								g: _Utils_eq(v.F, model.F) ? model.g : v.g,
+								g: v.g,
 								N: $elm$core$Maybe$Just(v),
 								O: v.g
 							}),
@@ -6887,12 +6887,16 @@ var $author$project$Pusher$update = F2(
 						_Utils_update(
 							model,
 							{
-								m: $elm$json$Json$Decode$errorToString(err),
+								n: $elm$json$Json$Decode$errorToString(err),
 								N: $elm$core$Maybe$Nothing
 							}),
 						$elm$core$Platform$Cmd$none);
 				}
 		}
+	});
+var $author$project$Pusher$Dto$ChannelPostData = F3(
+	function (id, content, socket_id) {
+		return {g: content, M: id, J: socket_id};
 	});
 var $author$project$Pusher$ContentChanged = function (a) {
 	return {$: 5, a: a};
@@ -6902,6 +6906,30 @@ var $author$project$Pusher$EnteringChannelName = function (a) {
 	return {$: 2, a: a};
 };
 var $elm$html$Html$button = _VirtualDom_node('button');
+var $author$project$Pusher$Dto$channelPostDataEncoder = function (channelPostData) {
+	return $elm$json$Json$Encode$object(
+		_List_fromArray(
+			[
+				_Utils_Tuple2(
+				'id',
+				$elm$json$Json$Encode$string(channelPostData.M)),
+				_Utils_Tuple2(
+				'content',
+				$elm$json$Json$Encode$string(channelPostData.g)),
+				_Utils_Tuple2(
+				'socket_id',
+				$elm$json$Json$Encode$string(channelPostData.J))
+			]));
+};
+var $elm$html$Html$Attributes$stringProperty = F2(
+	function (key, string) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			$elm$json$Json$Encode$string(string));
+	});
+var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
+var $elm$html$Html$code = _VirtualDom_node('code');
 var $elm$json$Json$Encode$bool = _Json_wrap;
 var $elm$html$Html$Attributes$boolProperty = F2(
 	function (key, bool) {
@@ -6963,19 +6991,13 @@ var $elm$html$Html$Events$onInput = function (tagger) {
 			A2($elm$json$Json$Decode$map, tagger, $elm$html$Html$Events$targetValue)));
 };
 var $elm$html$Html$p = _VirtualDom_node('p');
+var $elm$html$Html$pre = _VirtualDom_node('pre');
 var $elm$html$Html$span = _VirtualDom_node('span');
 var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
 var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $elm$html$Html$textarea = _VirtualDom_node('textarea');
-var $elm$html$Html$Attributes$stringProperty = F2(
-	function (key, string) {
-		return A2(
-			_VirtualDom_property,
-			key,
-			$elm$json$Json$Encode$string(string));
-	});
 var $elm$html$Html$Attributes$value = $elm$html$Html$Attributes$stringProperty('value');
 var $author$project$Pusher$view = function (model) {
 	var ev = function () {
@@ -6990,7 +7012,7 @@ var $author$project$Pusher$view = function (model) {
 						[
 							_Utils_Tuple2(
 							'socket_id',
-							$elm$json$Json$Encode$string(e.F)),
+							$elm$json$Json$Encode$string(e.J)),
 							_Utils_Tuple2(
 							'content',
 							$elm$json$Json$Encode$string(e.g))
@@ -6999,6 +7021,11 @@ var $author$project$Pusher$view = function (model) {
 			return '';
 		}
 	}();
+	var channelPostData = A3(
+		$author$project$Pusher$Dto$ChannelPostData,
+		$author$project$Pusher$ChannelNameUtil$pickoutNumber(model.j),
+		model.g,
+		model.J);
 	return A2(
 		$elm$html$Html$div,
 		_List_Nil,
@@ -7009,12 +7036,12 @@ var $author$project$Pusher$view = function (model) {
 				_List_fromArray(
 					[
 						$elm$html$Html$Events$onInput($author$project$Pusher$EnteringChannelName),
-						$elm$html$Html$Attributes$disabled(model.H),
-						$elm$html$Html$Attributes$value(model.r)
+						$elm$html$Html$Attributes$disabled(model.G),
+						$elm$html$Html$Attributes$value(model.j)
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text(model.r)
+						$elm$html$Html$text(model.j)
 					])),
 				A2(
 				$elm$html$Html$button,
@@ -7022,7 +7049,7 @@ var $author$project$Pusher$view = function (model) {
 					[
 						$elm$html$Html$Events$onClick($author$project$Pusher$DoClicked),
 						A2($elm$html$Html$Attributes$style, 'margin-left', '5px'),
-						$elm$html$Html$Attributes$disabled(model.H)
+						$elm$html$Html$Attributes$disabled(model.G)
 					]),
 				_List_fromArray(
 					[
@@ -7038,7 +7065,7 @@ var $author$project$Pusher$view = function (model) {
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text(model.m)
+						$elm$html$Html$text(model.n)
 					])),
 				A2(
 				$elm$html$Html$p,
@@ -7053,11 +7080,147 @@ var $author$project$Pusher$view = function (model) {
 					[
 						$elm$html$Html$Events$onInput($author$project$Pusher$ContentChanged),
 						$elm$html$Html$Attributes$value(model.g),
-						$elm$html$Html$Attributes$disabled(!model.H)
+						$elm$html$Html$Attributes$disabled(!model.G)
 					]),
 				_List_fromArray(
 					[
 						$elm$html$Html$text(model.g)
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('language-bash'),
+						$elm$html$Html$Attributes$class('highlighter-rouge')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('highlight')
+							]),
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$pre,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('highlight')
+									]),
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$code,
+										_List_Nil,
+										_List_fromArray(
+											[
+												$elm$html$Html$text('curl https://resp.me/channel/query?channel_name'),
+												A2(
+												$elm$html$Html$span,
+												_List_fromArray(
+													[
+														$elm$html$Html$Attributes$class('o')
+													]),
+												_List_fromArray(
+													[
+														$elm$html$Html$text('=')
+													])),
+												$elm$html$Html$text(
+												$author$project$Pusher$ChannelNameUtil$pickoutNumber(model.j))
+											]))
+									]))
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('language-bash'),
+						$elm$html$Html$Attributes$class('highlighter-rouge')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('highlight')
+							]),
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$pre,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('highlight')
+									]),
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$code,
+										_List_Nil,
+										_List_fromArray(
+											[
+												$elm$html$Html$text('curl '),
+												A2(
+												$elm$html$Html$span,
+												_List_fromArray(
+													[
+														$elm$html$Html$Attributes$class('s1')
+													]),
+												_List_fromArray(
+													[
+														$elm$html$Html$text('\'https://resp.me/channel/post\'')
+													])),
+												A2(
+												$elm$html$Html$span,
+												_List_fromArray(
+													[
+														$elm$html$Html$Attributes$class('nt')
+													]),
+												_List_fromArray(
+													[
+														$elm$html$Html$text(' -H ')
+													])),
+												A2(
+												$elm$html$Html$span,
+												_List_fromArray(
+													[
+														$elm$html$Html$Attributes$class('s1')
+													]),
+												_List_fromArray(
+													[
+														$elm$html$Html$text('\'Content-Type: application/json\'')
+													])),
+												A2(
+												$elm$html$Html$span,
+												_List_fromArray(
+													[
+														$elm$html$Html$Attributes$class('nt')
+													]),
+												_List_fromArray(
+													[
+														$elm$html$Html$text(' --data-raw ')
+													])),
+												A2(
+												$elm$html$Html$span,
+												_List_fromArray(
+													[
+														$elm$html$Html$Attributes$class('s1')
+													]),
+												_List_fromArray(
+													[
+														$elm$html$Html$text(
+														'\'' + (A2(
+															$elm$json$Json$Encode$encode,
+															0,
+															$author$project$Pusher$Dto$channelPostDataEncoder(channelPostData)) + '\''))
+													]))
+											]))
+									]))
+							]))
 					]))
 			]));
 };

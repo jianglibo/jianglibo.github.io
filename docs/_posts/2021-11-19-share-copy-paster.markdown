@@ -71,14 +71,14 @@ custom_css:
 
 ### 为什么要写这样一个工具
 
-当你远程登录一个系统，需要在机器之间复制文本时使用。你可以打开两个浏览器试试这个功能。
+当你远程登录一个系统，需要在机器之间复制文本时使用。你可以打开两个浏览器试试这个功能。 远程机器即使没有图形界面时可以应付一下。
 
-远程机器没有图形界面时可以应付一下：
-```bash
+
+<!-- ```bash
 curl https://resp.me/channel/query?channel_name=968133317
 ```
 
 ```bash
 curl 'https://resp.me/channel/post' -H 'Content-Type: application/json' \
   --data-raw '{"content":"dcc","socket_id":"133963.35875703","id":"483-804-225"}'
-```
+``` -->
