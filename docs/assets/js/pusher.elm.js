@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.bm,
-		impl.bN,
-		impl.bI,
+		impl.bn,
+		impl.bO,
+		impl.bJ,
 		function() { return function() {} }
 	);
 });
@@ -3928,11 +3928,11 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.bm,
-		impl.bN,
-		impl.bI,
+		impl.bn,
+		impl.bO,
+		impl.bJ,
 		function(sendToApp, initialModel) {
-			var view = impl.bO;
+			var view = impl.bP;
 			/**/
 			var domNode = args['node'];
 			//*/
@@ -3964,12 +3964,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.bm,
-		impl.bN,
-		impl.bI,
+		impl.bn,
+		impl.bO,
+		impl.bJ,
 		function(sendToApp, initialModel) {
 			var divertHrefToApp = impl.ah && impl.ah(sendToApp)
-			var view = impl.bO;
+			var view = impl.bP;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3982,7 +3982,7 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.bM) && (_VirtualDom_doc.title = title = doc.bM);
+				(title !== doc.bN) && (_VirtualDom_doc.title = title = doc.bN);
 			});
 		}
 	);
@@ -4038,8 +4038,8 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.by;
-	var onUrlRequest = impl.bz;
+	var onUrlChange = impl.bz;
+	var onUrlRequest = impl.bA;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
@@ -4069,13 +4069,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		bm: function(flags)
+		bn: function(flags)
 		{
-			return A3(impl.bm, flags, _Browser_getUrl(), key);
+			return A3(impl.bn, flags, _Browser_getUrl(), key);
 		},
+		bP: impl.bP,
 		bO: impl.bO,
-		bN: impl.bN,
-		bI: impl.bI
+		bJ: impl.bJ
 	});
 }
 
@@ -4141,17 +4141,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { bk: 'hidden', a9: 'visibilitychange' }
+		? { bl: 'hidden', a9: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { bk: 'mozHidden', a9: 'mozvisibilitychange' }
+		? { bl: 'mozHidden', a9: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { bk: 'msHidden', a9: 'msvisibilitychange' }
+		? { bl: 'msHidden', a9: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { bk: 'webkitHidden', a9: 'webkitvisibilitychange' }
-		: { bk: 'hidden', a9: 'visibilitychange' };
+		? { bl: 'webkitHidden', a9: 'webkitvisibilitychange' }
+		: { bl: 'hidden', a9: 'visibilitychange' };
 }
 
 
@@ -4392,7 +4392,7 @@ var _Http_toTask = F3(function(router, toTask, request)
 		$elm$core$Maybe$isJust(request.a_) && _Http_track(router, xhr, request.a_.a);
 
 		try {
-			xhr.open(request.bn, request.aa, true);
+			xhr.open(request.bo, request.aa, true);
 		} catch (e) {
 			return done($elm$http$Http$BadUrl_(request.aa));
 		}
@@ -4415,7 +4415,7 @@ function _Http_configureRequest(xhr, request)
 	{
 		xhr.setRequestHeader(headers.a.a, headers.a.b);
 	}
-	xhr.timeout = request.bL.a || 0;
+	xhr.timeout = request.bM.a || 0;
 	xhr.responseType = request.W.d;
 	xhr.withCredentials = request.a5;
 }
@@ -4439,8 +4439,8 @@ function _Http_toMetadata(xhr)
 {
 	return {
 		aa: xhr.responseURL,
-		bG: xhr.status,
-		bH: xhr.statusText,
+		bH: xhr.status,
+		bI: xhr.statusText,
 		ax: _Http_parseHeaders(xhr.getAllResponseHeaders())
 	};
 }
@@ -4536,14 +4536,14 @@ function _Http_track(router, xhr, tracker)
 	xhr.upload.addEventListener('progress', function(event) {
 		if (xhr.c) { return; }
 		_Scheduler_rawSpawn(A2($elm$core$Platform$sendToSelf, router, _Utils_Tuple2(tracker, $elm$http$Http$Sending({
-			bF: event.loaded,
+			bG: event.loaded,
 			aU: event.total
 		}))));
 	});
 	xhr.addEventListener('progress', function(event) {
 		if (xhr.c) { return; }
 		_Scheduler_rawSpawn(A2($elm$core$Platform$sendToSelf, router, _Utils_Tuple2(tracker, $elm$http$Http$Receiving({
-			bC: event.loaded,
+			bD: event.loaded,
 			aU: event.lengthComputable ? $elm$core$Maybe$Just(event.total) : $elm$core$Maybe$Nothing
 		}))));
 	});
@@ -6030,7 +6030,7 @@ var $elm$http$Http$resolve = F2(
 			case 3:
 				var metadata = response.a;
 				return $elm$core$Result$Err(
-					$elm$http$Http$BadStatus(metadata.bG));
+					$elm$http$Http$BadStatus(metadata.bH));
 			default:
 				var body = response.b;
 				return A2(
@@ -6193,8 +6193,8 @@ var $elm$http$Http$cmdMap = F2(
 					a7: r.a7,
 					W: A2(_Http_mapExpect, func, r.W),
 					ax: r.ax,
-					bn: r.bn,
-					bL: r.bL,
+					bo: r.bo,
+					bM: r.bM,
 					a_: r.a_,
 					aa: r.aa
 				});
@@ -6219,15 +6219,15 @@ var $elm$http$Http$subscription = _Platform_leaf('Http');
 var $elm$http$Http$request = function (r) {
 	return $elm$http$Http$command(
 		$elm$http$Http$Request(
-			{a5: false, a7: r.a7, W: r.W, ax: r.ax, bn: r.bn, bL: r.bL, a_: r.a_, aa: r.aa}));
+			{a5: false, a7: r.a7, W: r.W, ax: r.ax, bo: r.bo, bM: r.bM, a_: r.a_, aa: r.aa}));
 };
 var $elm$http$Http$get = function (r) {
 	return $elm$http$Http$request(
-		{a7: $elm$http$Http$emptyBody, W: r.W, ax: _List_Nil, bn: 'GET', bL: $elm$core$Maybe$Nothing, a_: $elm$core$Maybe$Nothing, aa: r.aa});
+		{a7: $elm$http$Http$emptyBody, W: r.W, ax: _List_Nil, bo: 'GET', bM: $elm$core$Maybe$Nothing, a_: $elm$core$Maybe$Nothing, aa: r.aa});
 };
 var $author$project$Pusher$Dto$InitValue = F2(
 	function (cpsyc_url, channel_name) {
-		return {j: channel_name, B: cpsyc_url};
+		return {j: channel_name, C: cpsyc_url};
 	});
 var $author$project$Pusher$Dto$initValueDecoder = A3(
 	$elm$json$Json$Decode$map2,
@@ -6298,13 +6298,13 @@ var $author$project$Pusher$init = function (flags) {
 		return _Utils_Tuple2(
 			{
 				j: initValue.j,
-				G: false,
+				H: false,
 				g: '',
-				B: initValue.B,
+				C: initValue.C,
 				n: '',
 				N: $elm$core$Maybe$Nothing,
 				O: '',
-				J: '',
+				A: '',
 				_: $elm$time$Time$millisToPosix(0)
 			},
 			function () {
@@ -6314,7 +6314,7 @@ var $author$project$Pusher$init = function (flags) {
 					$author$project$Pusher$channelNameLength) ? $elm$http$Http$get(
 					{
 						W: A2($elm$http$Http$expectJson, $author$project$Pusher$ReturnChannelData, $author$project$Pusher$Dto$channelDataDecoder),
-						aa: A2($author$project$Pusher$ChannelNameUtil$buildChannelQueryUrl, initValue.B, allNumberCode)
+						aa: A2($author$project$Pusher$ChannelNameUtil$buildChannelQueryUrl, initValue.C, allNumberCode)
 					}) : $elm$core$Platform$Cmd$none;
 			}());
 	} else {
@@ -6322,13 +6322,13 @@ var $author$project$Pusher$init = function (flags) {
 		return _Utils_Tuple2(
 			{
 				j: '',
-				G: false,
+				H: false,
 				g: '',
-				B: '',
+				C: '',
 				n: $elm$json$Json$Decode$errorToString(err),
 				N: $elm$core$Maybe$Nothing,
 				O: '',
-				J: '',
+				A: '',
 				_: $elm$time$Time$millisToPosix(0)
 			},
 			$elm$core$Platform$Cmd$none);
@@ -6613,15 +6613,16 @@ var $elm$time$Time$every = F2(
 		return $elm$time$Time$subscription(
 			A2($elm$time$Time$Every, interval, tagger));
 	});
-var $author$project$Pusher$Dto$RemoteContentUpldateEvent = F2(
-	function (socket_id, content) {
-		return {g: content, J: socket_id};
+var $author$project$Pusher$Dto$RemoteContentUpldateEvent = F3(
+	function (socket_id, content, force) {
+		return {g: content, bk: force, A: socket_id};
 	});
-var $author$project$Pusher$Dto$remoteContentUpdateEventDecoder = A3(
-	$elm$json$Json$Decode$map2,
+var $author$project$Pusher$Dto$remoteContentUpdateEventDecoder = A4(
+	$elm$json$Json$Decode$map3,
 	$author$project$Pusher$Dto$RemoteContentUpldateEvent,
 	A2($elm$json$Json$Decode$field, 'socket_id', $elm$json$Json$Decode$string),
-	A2($elm$json$Json$Decode$field, 'content', $elm$json$Json$Decode$string));
+	A2($elm$json$Json$Decode$field, 'content', $elm$json$Json$Decode$string),
+	A2($elm$json$Json$Decode$field, 'force', $elm$json$Json$Decode$bool));
 var $elm$json$Json$Decode$value = _Json_decodeValue;
 var $author$project$Pusher$remoteContentUpdated = _Platform_incomingPort('remoteContentUpdated', $elm$json$Json$Decode$value);
 var $author$project$Pusher$socketIdAcquired = _Platform_incomingPort('socketIdAcquired', $elm$json$Json$Decode$string);
@@ -6651,6 +6652,7 @@ var $author$project$Pusher$askForConfirmation = _Platform_outgoingPort(
 	function ($) {
 		return $elm$json$Json$Encode$null;
 	});
+var $elm$json$Json$Encode$bool = _Json_wrap;
 var $author$project$Pusher$ChannelNameUtil$buildContentPostUrl = function (baseUrl) {
 	return _Utils_ap(
 		baseUrl,
@@ -6701,6 +6703,7 @@ var $elm$http$Http$jsonBody = function (value) {
 		A2($elm$json$Json$Encode$encode, 0, value));
 };
 var $elm$core$Basics$neq = _Utils_notEqual;
+var $elm$core$Basics$not = _Basics_not;
 var $elm$json$Json$Encode$object = function (pairs) {
 	return _Json_wrap(
 		A3(
@@ -6716,7 +6719,7 @@ var $elm$json$Json$Encode$object = function (pairs) {
 };
 var $elm$http$Http$post = function (r) {
 	return $elm$http$Http$request(
-		{a7: r.a7, W: r.W, ax: _List_Nil, bn: 'POST', bL: $elm$core$Maybe$Nothing, a_: $elm$core$Maybe$Nothing, aa: r.aa});
+		{a7: r.a7, W: r.W, ax: _List_Nil, bo: 'POST', bM: $elm$core$Maybe$Nothing, a_: $elm$core$Maybe$Nothing, aa: r.aa});
 };
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $author$project$Pusher$subscribeToPusher = _Platform_outgoingPort('subscribeToPusher', $elm$json$Json$Encode$string);
@@ -6741,7 +6744,7 @@ var $author$project$Pusher$update = F2(
 					$elm$http$Http$get(
 						{
 							W: A2($elm$http$Http$expectJson, $author$project$Pusher$ReturnChannelData, $author$project$Pusher$Dto$channelDataDecoder),
-							aa: A2($author$project$Pusher$ChannelNameUtil$buildChannelQueryUrl, model.B, allNumberCode)
+							aa: A2($author$project$Pusher$ChannelNameUtil$buildChannelQueryUrl, model.C, allNumberCode)
 						})) : _Utils_Tuple2(
 					_Utils_update(
 						model,
@@ -6768,7 +6771,7 @@ var $author$project$Pusher$update = F2(
 								model,
 								{
 									j: A2($author$project$Pusher$ChannelNameUtil$insertDash, cd.M, 3),
-									G: true,
+									H: true,
 									g: cd.g
 								}),
 							$author$project$Pusher$subscribeToPusher(cd.M));
@@ -6794,7 +6797,7 @@ var $author$project$Pusher$update = F2(
 					$elm$http$Http$get(
 						{
 							W: A2($elm$http$Http$expectJson, $author$project$Pusher$ReturnChannelData, $author$project$Pusher$Dto$channelDataDecoder),
-							aa: A2($author$project$Pusher$ChannelNameUtil$buildChannelQueryUrl, model.B, allNumberCode)
+							aa: A2($author$project$Pusher$ChannelNameUtil$buildChannelQueryUrl, model.C, allNumberCode)
 						})) : _Utils_Tuple2(
 					_Utils_update(
 						model,
@@ -6826,13 +6829,16 @@ var $author$project$Pusher$update = F2(
 											$elm$json$Json$Encode$string(model.g)),
 											_Utils_Tuple2(
 											'socket_id',
-											$elm$json$Json$Encode$string(model.J)),
+											$elm$json$Json$Encode$string(model.A)),
 											_Utils_Tuple2(
 											'id',
-											$elm$json$Json$Encode$string(model.j))
+											$elm$json$Json$Encode$string(model.j)),
+											_Utils_Tuple2(
+											'force',
+											$elm$json$Json$Encode$bool(false))
 										]))),
 							W: $elm$http$Http$expectString($author$project$Pusher$PostContentReturn),
-							aa: $author$project$Pusher$ChannelNameUtil$buildContentPostUrl(model.B)
+							aa: $author$project$Pusher$ChannelNameUtil$buildContentPostUrl(model.C)
 						})) : _Utils_Tuple2(
 					_Utils_update(
 						model,
@@ -6866,7 +6872,7 @@ var $author$project$Pusher$update = F2(
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{J: socket_id}),
+						{A: socket_id}),
 					$elm$core$Platform$Cmd$none);
 			default:
 				var contentUpdateResult = msg.a;
@@ -6876,7 +6882,7 @@ var $author$project$Pusher$update = F2(
 						_Utils_update(
 							model,
 							{
-								g: v.g,
+								g: (_Utils_eq(v.A, model.A) && (!v.bk)) ? model.g : v.g,
 								N: $elm$core$Maybe$Just(v),
 								O: v.g
 							}),
@@ -6896,7 +6902,7 @@ var $author$project$Pusher$update = F2(
 	});
 var $author$project$Pusher$Dto$ChannelPostData = F3(
 	function (id, content, socket_id) {
-		return {g: content, M: id, J: socket_id};
+		return {g: content, M: id, A: socket_id};
 	});
 var $author$project$Pusher$ContentChanged = function (a) {
 	return {$: 5, a: a};
@@ -6918,7 +6924,10 @@ var $author$project$Pusher$Dto$channelPostDataEncoder = function (channelPostDat
 				$elm$json$Json$Encode$string(channelPostData.g)),
 				_Utils_Tuple2(
 				'socket_id',
-				$elm$json$Json$Encode$string(channelPostData.J))
+				$elm$json$Json$Encode$string(channelPostData.A)),
+				_Utils_Tuple2(
+				'force',
+				$elm$json$Json$Encode$bool(true))
 			]));
 };
 var $elm$html$Html$Attributes$stringProperty = F2(
@@ -6930,7 +6939,6 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$code = _VirtualDom_node('code');
-var $elm$json$Json$Encode$bool = _Json_wrap;
 var $elm$html$Html$Attributes$boolProperty = F2(
 	function (key, bool) {
 		return A2(
@@ -6941,7 +6949,6 @@ var $elm$html$Html$Attributes$boolProperty = F2(
 var $elm$html$Html$Attributes$disabled = $elm$html$Html$Attributes$boolProperty('disabled');
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$html$Html$input = _VirtualDom_node('input');
-var $elm$core$Basics$not = _Basics_not;
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 0, a: a};
 };
@@ -7012,7 +7019,7 @@ var $author$project$Pusher$view = function (model) {
 						[
 							_Utils_Tuple2(
 							'socket_id',
-							$elm$json$Json$Encode$string(e.J)),
+							$elm$json$Json$Encode$string(e.A)),
 							_Utils_Tuple2(
 							'content',
 							$elm$json$Json$Encode$string(e.g))
@@ -7025,7 +7032,7 @@ var $author$project$Pusher$view = function (model) {
 		$author$project$Pusher$Dto$ChannelPostData,
 		$author$project$Pusher$ChannelNameUtil$pickoutNumber(model.j),
 		model.g,
-		model.J);
+		model.A);
 	return A2(
 		$elm$html$Html$div,
 		_List_Nil,
@@ -7036,7 +7043,7 @@ var $author$project$Pusher$view = function (model) {
 				_List_fromArray(
 					[
 						$elm$html$Html$Events$onInput($author$project$Pusher$EnteringChannelName),
-						$elm$html$Html$Attributes$disabled(model.G),
+						$elm$html$Html$Attributes$disabled(model.H),
 						$elm$html$Html$Attributes$value(model.j)
 					]),
 				_List_fromArray(
@@ -7049,7 +7056,7 @@ var $author$project$Pusher$view = function (model) {
 					[
 						$elm$html$Html$Events$onClick($author$project$Pusher$DoClicked),
 						A2($elm$html$Html$Attributes$style, 'margin-left', '5px'),
-						$elm$html$Html$Attributes$disabled(model.G)
+						$elm$html$Html$Attributes$disabled(model.H)
 					]),
 				_List_fromArray(
 					[
@@ -7080,7 +7087,7 @@ var $author$project$Pusher$view = function (model) {
 					[
 						$elm$html$Html$Events$onInput($author$project$Pusher$ContentChanged),
 						$elm$html$Html$Attributes$value(model.g),
-						$elm$html$Html$Attributes$disabled(!model.G)
+						$elm$html$Html$Attributes$disabled(!model.H)
 					]),
 				_List_fromArray(
 					[
@@ -7225,5 +7232,5 @@ var $author$project$Pusher$view = function (model) {
 			]));
 };
 var $author$project$Pusher$main = $elm$browser$Browser$element(
-	{bm: $author$project$Pusher$init, bI: $author$project$Pusher$subscriptions, bN: $author$project$Pusher$update, bO: $author$project$Pusher$view});
+	{bn: $author$project$Pusher$init, bJ: $author$project$Pusher$subscriptions, bO: $author$project$Pusher$update, bP: $author$project$Pusher$view});
 _Platform_export({'Pusher':{'init':$author$project$Pusher$main($elm$json$Json$Decode$value)(0)}});}(this));
