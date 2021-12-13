@@ -13,7 +13,7 @@ custom_css:
 
 ## 为什么要写这样一个工具
 
-Java可以将Graphql的查询转换成强类型的Java类，最大限度的减少typo和其它错误。但有时候纯粹的String POST也会让事情变得简单，Java处理多行字符串是很痛苦的，容易出错。所以用elm写了这么一个小工具。
+Java可以将Graphql的查询转换成强类型的Java类，最大限度的减少typo和其它错误。但有时候纯粹的String POST也会让事情变得简单，Java处理多行字符串是很痛苦的，容易出错。所以用elm写了这么一个小工具。[源代码](https://github.com/jianglibo/elm-mini-util)
 
 <div id="myapp"><div id="elmapp"></div></div>
 <script>
