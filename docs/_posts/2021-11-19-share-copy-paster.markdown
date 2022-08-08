@@ -16,7 +16,7 @@ custom_css:
 <div id="myapp"><div id="elmapp"></div></div>
 <script>
     console.log("hash: " + window.location.hash);
-    var app_host = "https://resp.me";
+    var app_host = "https://cpsyc.resp.me";
     var app = Elm.Pusher.init({
       node: document.getElementById('elmapp'),
       flags: { 
