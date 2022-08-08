@@ -6,7 +6,7 @@ description: Share text content between hosts, if remote controll doesn't have c
 categories: java
 custom_js:
 - https://js.pusher.com/7.0/pusher.min.js
-- pusher.elm
+- pusher.elm.2022.8.8
 custom_css:
 - multiple-line-escape
 
